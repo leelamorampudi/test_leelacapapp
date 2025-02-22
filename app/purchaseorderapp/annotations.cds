@@ -207,6 +207,39 @@ annotate service.PurchaseOrderItemSet with @(
     ]
 );
 
+annotate CatalogService.PurchaseOrderSet with {
+    PARTNER_GUID@(
+        Common : { 
+            Text : PARTNER_GUID.COMPANY_NAME,
+         },
+         ValueList.entity: CatalogService.BusinessPartnerSet
+    )
+};
+
+annotate CatalogService.PurchaseOrderItemSet with {
+    PRODUCT_GUID@(
+        Common : { 
+            Text : PRODUCT_GUID.DESCRIPTION,
+         },
+         ValueList.entity: CatalogService.ProductSet
+    )
+};
+@cds.odata.valuelist
+annotate CatalogService.BusinessPartnerSet with @(
+    UI.Identification:[{
+        $Type : 'UI.DataField',
+        Value : COMPANY_NAME,
+    }]
+);
+
+@cds.odata.valuelist
+annotate CatalogService.ProductSet with @(
+    UI.Identification:[{
+        $Type : 'UI.DataField',
+        Value : DESCRIPTION,
+    }]
+);
+
 
 
 
